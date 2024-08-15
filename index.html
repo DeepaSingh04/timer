@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .timer-box {
+          width: 200px;
+          height: 100px;
+          background-color: #333;
+          border-radius: 10px;
+          padding: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        .timer {
+          font-size: 36px;
+          font-weight: bold;
+          color: #fff;
+          text-align: center;
+        }
+    
+        .timer span {
+          margin: 0 5px;
+        }
+    
+        .timer span#hours {
+          animation: blink 2s infinite;
+        }
+    
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      </style>
+</head>
+<body>
+    <div class="timer-box">
+        <div class="timer">
+          <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+        </div>
+      </div>
+    
+      <script>
+        const hours = document.getElementById('hours');
+        const minutes = document.getElementById('minutes');
+        const seconds = document.getElementById('seconds');
+    
+        let time = 0;
+    
+        setInterval(() => {
+          time++;
+          hours.textContent = String(Math.floor(time / 3600)).padStart(2, '0');
+          minutes.textContent = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+          seconds.textContent = String(time % 60).padStart(2, '0');
+        }, 1000);
+      </script>
+</body>
+</html>
